@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="navigation">
+      <h3>欢迎使用 {{ config?.appName || 'Vue项目' }}</h3>
+      <div class="nav-links">
+        <router-link to="/about" class="nav-link">
+          <div class="link-card">
+            <h4>关于页面</h4>
+            <p>了解更多关于本项目的信息和技术栈</p>
+          </div>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import config from '@/config/index.js';
 
 export default {
-  name: "HomeView",
-  components: {
-    HelloWorld,
+  name: 'HomeView',
+  components: {},
+  data() {
+    return {
+      config,
+    };
+  },
+  mounted() {
+    console.log('project:', this.config.appName);
   },
 };
 </script>

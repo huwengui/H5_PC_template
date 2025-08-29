@@ -1,11 +1,11 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import "lib-flexible";
-import "@/css/base.css";
-import request from "@/utils/request";
-import { api } from "@/utils/request";
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import 'lib-flexible/flexible.js'; // 暂时注释掉，避免加载错误
+import '@/css/base.css';
+import request from '@/utils/request';
+import { api } from '@/utils/request';
 
 // 将HTTP客户端挂载到Vue原型上
 Vue.prototype.$http = request;
@@ -17,5 +17,5 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  render: (h) => h(App),
-}).$mount("#app");
+  render: h => h(App),
+}).$mount('#app');
