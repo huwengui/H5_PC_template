@@ -1,8 +1,10 @@
 {
   "endOfLine": "auto",
-  "semi": true,
+  "semi": false,
   "singleQuote": true,
   "tabWidth": 2,
+  "requirePragma": false,
+  "insertPragma": false,
   "trailingComma": "es5",
   "printWidth": 80,
   "useTabs": false,
