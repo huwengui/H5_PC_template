@@ -16,7 +16,8 @@
 
 <script>
 // @ is an alias to /src
-import config from '@/config/index.js';
+import config from '@/config/index.js'
+import api from '@/api/index.js'
 
 export default {
   name: 'HomeView',
@@ -24,12 +25,34 @@ export default {
   data() {
     return {
       config,
-    };
+    }
   },
   mounted() {
-    console.log('project:', this.config.appName);
+    console.log('project:', this.config.appName)
+    api
+      .login2({
+        username: 'admin',
+        password: '123456',
+      })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log('login2 error:', err)
+      })
+    api
+      .login({
+        username: 'admin',
+        password: '123456',
+      })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log('login error:', err)
+      })
   },
-};
+}
 </script>
 
 <style scoped>

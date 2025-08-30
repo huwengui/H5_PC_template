@@ -4,6 +4,6 @@ const projectBConfig = {
   wss_url: 'wss://ws.project-b.com',
   appName: '项目B',
   themeColor: '#52c41a',
-};
+}
 
-export default projectBConfig;
+export default projectBConfig

@@ -8,4 +8,4 @@ export default {
   // 项目特有参数
   appName: '项目A',
   themeColor: '#1890ff',
-};
+}
