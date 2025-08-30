@@ -2,14 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import 'lib-flexible/flexible.js' // 暂时注释掉，避免加载错误
 import '@/css/base.css'
-import request from '@/utils/request'
-import { api } from '@/utils/request'
 
-// 将HTTP客户端挂载到Vue原型上
-Vue.prototype.$http = request
-Vue.prototype.$api = api
+Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 

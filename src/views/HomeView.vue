@@ -3,10 +3,10 @@
     <div class="navigation">
       <h3>欢迎使用 {{ config?.appName || 'Vue项目' }}</h3>
       <div class="nav-links">
-        <router-link to="/about" class="nav-link">
+        <router-link to="/utils-doc" class="nav-link">
           <div class="link-card">
-            <h4>关于页面</h4>
-            <p>了解更多关于本项目的信息和技术栈</p>
+            <h4>工具库文档</h4>
+            <p>查看项目中所有工具函数的详细文档和使用示例</p>
           </div>
         </router-link>
       </div>
