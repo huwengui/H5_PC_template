@@ -7,6 +7,6 @@ export default {
     return request.post('/user/login', data)
   },
   login2: data => {
-    return request_test.post('/user/login', data)
+    return request_test.post('/three/test', data)
   },
 }

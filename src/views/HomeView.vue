@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <div class="navigation">
-      <h3>欢迎使用 {{ config?.appName || 'Vue项目' }}</h3>
       <div class="nav-links">
         <router-link to="/utils-doc" class="nav-link">
           <div class="link-card">
@@ -17,7 +16,6 @@
 <script>
 // @ is an alias to /src
 import config from '@/config/index.js'
-import api from '@/api/index.js'
 
 export default {
   name: 'HomeView',
@@ -29,7 +27,7 @@ export default {
   },
   mounted() {
     console.log('project:', this.config.appName)
-    api
+    this.$api
       .login2({
         username: 'admin',
         password: '123456',
@@ -38,9 +36,9 @@ export default {
         console.log(res)
       })
       .catch(err => {
-        console.log('login2 error:', err)
+        // console.error('请求失败:', err)
       })
-    api
+    this.$api
       .login({
         username: 'admin',
         password: '123456',
@@ -49,7 +47,7 @@ export default {
         console.log(res)
       })
       .catch(err => {
-        console.log('login error:', err)
+        // console.error('请求失败:', err)
       })
   },
 }

@@ -1768,7 +1768,7 @@ export { request, request_test }
  * @description 提供统一的默认导出接口
  */
 export default {
-  // 基础工具
+  // 基础工具函数
   debounce,
   throttle,
   deepClone,
@@ -1778,6 +1778,7 @@ export default {
   formatFileSize,
   generateRandomString,
   generateUUID,
+
   storage,
   urlUtils,
   arrayUtils,
