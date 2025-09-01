@@ -36,14 +36,14 @@
       <!-- 模块内容 -->
       <el-card class="module-content-card">
         <div slot="header" class="card-header">
-          <!-- <span>模块内容</span> -->
+          <span>模块内容</span>
         </div>
         <div v-if="getCurrentFunction()" class="function-detail">
           <el-descriptions
             :title="getCurrentFunction().name"
             :column="1"
             border
-            style="margin-bottom: 50px"
+            style="margin-bottom: 30px"
           >
             <el-descriptions-item label="函数签名">
               <el-tag type="primary">{{
@@ -59,7 +59,7 @@
           </el-descriptions>
 
           <!-- 参数表格 -->
-          <div class="params-section" style="margin-bottom: 50px">
+          <div class="params-section" style="margin-bottom: 30px">
             <h4 style="padding: 10px 5px">参数</h4>
             <el-table :data="getCurrentFunction().params" border>
               <el-table-column prop="name" label="参数名" width="120" />
@@ -75,7 +75,7 @@
           </div>
 
           <!-- 返回值 -->
-          <div class="returns-section" style="margin-bottom: 50px">
+          <div class="returns-section" style="margin-bottom: 30px">
             <h4 style="padding: 10px 5px">返回值</h4>
             <el-descriptions :column="1" border>
               <el-descriptions-item label="类型">
@@ -90,7 +90,7 @@
           </div>
 
           <!-- 代码示例 -->
-          <div class="example-section" style="margin-bottom: 50px">
+          <div class="example-section" style="margin-bottom: 30px">
             <h4 style="padding: 10px 5px">代码示例</h4>
             <el-tabs type="border-card" class="code-tabs">
               <el-tab-pane label="基础用法">
@@ -167,9 +167,7 @@ export default {
                 },
               ],
               returns: { type: 'Function', description: '防抖后的函数' },
-              example: `import utils from '@/utils'
-
-const debouncedSearch = utils.debounce(searchFunction, 300)
+              example: `const debouncedSearch = this.$utils.debounce(searchFunction, 300)
 input.addEventListener('input', debouncedSearch)`,
             },
             {
@@ -186,9 +184,7 @@ input.addEventListener('input', debouncedSearch)`,
                 },
               ],
               returns: { type: 'Function', description: '节流后的函数' },
-              example: `import utils from '@/utils'
-
-const throttledScroll = utils.throttle(handleScroll, 100)
+              example: `const throttledScroll = this.$utils.throttle(handleScroll, 100)
 window.addEventListener('scroll', throttledScroll)`,
             },
             {
@@ -200,9 +196,7 @@ window.addEventListener('scroll', throttledScroll)`,
                 { name: 'obj', type: 'any', description: '要克隆的对象' },
               ],
               returns: { type: 'any', description: '克隆后的对象' },
-              example: `import utils from '@/utils'
-
-const cloned = utils.deepClone(originalObject)`,
+              example: `const cloned = this.$utils.deepClone(originalObject)`,
             },
             {
               name: '格式化日期',
@@ -223,9 +217,7 @@ const cloned = utils.deepClone(originalObject)`,
                 },
               ],
               returns: { type: 'string', description: '格式化后的日期字符串' },
-              example: `import utils from '@/utils'
-
-utils.formatDate(new Date(), 'YYYY-MM-DD') // '2023-12-25'`,
+              example: `this.$utils.formatDate(new Date(), 'YYYY-MM-DD') // '2023-12-25'`,
             },
             {
               name: '相对时间',
@@ -240,9 +232,7 @@ utils.formatDate(new Date(), 'YYYY-MM-DD') // '2023-12-25'`,
                 },
               ],
               returns: { type: 'string', description: '相对时间描述' },
-              example: `import utils from '@/utils'
-
-utils.getRelativeTime(new Date(Date.now() - 3600000)) // '1小时前'`,
+              example: `this.$utils.getRelativeTime(new Date(Date.now() - 3600000)) // '1小时前'`,
             },
             {
               name: '格式化数字',
@@ -259,9 +249,7 @@ utils.getRelativeTime(new Date(Date.now() - 3600000)) // '1小时前'`,
                 },
               ],
               returns: { type: 'string', description: '格式化后的数字字符串' },
-              example: `import utils from '@/utils'
-
-utils.formatNumber(1234567) // '1,234,567'`,
+              example: `this.$utils.formatNumber(1234567) // '1,234,567'`,
             },
             {
               name: '格式化文件大小',
@@ -278,9 +266,7 @@ utils.formatNumber(1234567) // '1,234,567'`,
                 },
               ],
               returns: { type: 'string', description: '格式化后的文件大小' },
-              example: `import utils from '@/utils'
-
-utils.formatFileSize(1024) // '1.00 KB'`,
+              example: `this.$utils.formatFileSize(1024) // '1.00 KB'`,
             },
             {
               name: '生成随机字符串',
@@ -297,9 +283,7 @@ utils.formatFileSize(1024) // '1.00 KB'`,
                 },
               ],
               returns: { type: 'string', description: '随机字符串' },
-              example: `import utils from '@/utils'
-
-utils.generateRandomString(8) // 'aB3xY9mN'`,
+              example: `this.$utils.generateRandomString(8) // 'aB3xY9mN'`,
             },
             {
               name: '生成UUID',
@@ -308,9 +292,7 @@ utils.generateRandomString(8) // 'aB3xY9mN'`,
               signature: 'generateUUID(): string',
               params: [],
               returns: { type: 'string', description: 'UUID字符串' },
-              example: `import utils from '@/utils'
-
-utils.generateUUID() // 'f47ac10b-58cc-4372-a567-0e02b2c3d479'`,
+              example: `this.$utils.generateUUID() // 'f47ac10b-58cc-4372-a567-0e02b2c3d479'`,
             },
           ],
         },
@@ -328,9 +310,7 @@ utils.generateUUID() // 'f47ac10b-58cc-4372-a567-0e02b2c3d479'`,
                 { name: 'phone', type: 'string', description: '手机号码' },
               ],
               returns: { type: 'boolean', description: '验证结果' },
-              example: `import utils from '@/utils'
-
-utils.validatePhone('13800138000') // true`,
+              example: `this.$utils.validatePhone('13800138000') // true`,
             },
             {
               name: '验证邮箱',
@@ -341,9 +321,7 @@ utils.validatePhone('13800138000') // true`,
                 { name: 'email', type: 'string', description: '邮箱地址' },
               ],
               returns: { type: 'boolean', description: '验证结果' },
-              example: `import utils from '@/utils'
-
-utils.validateEmail('user@example.com') // true`,
+              example: `this.$utils.validateEmail('user@example.com') // true`,
             },
             {
               name: '验证身份证',
@@ -354,9 +332,7 @@ utils.validateEmail('user@example.com') // true`,
                 { name: 'idCard', type: 'string', description: '身份证号码' },
               ],
               returns: { type: 'boolean', description: '验证结果' },
-              example: `import utils from '@/utils'
-
-utils.validateIdCard('110101199003077777') // true`,
+              example: `this.$utils.validateIdCard('110101199003077777') // true`,
             },
             {
               name: '验证密码',
@@ -367,9 +343,7 @@ utils.validateIdCard('110101199003077777') // true`,
                 { name: 'password', type: 'string', description: '密码' },
               ],
               returns: { type: 'boolean', description: '验证结果' },
-              example: `import utils from '@/utils'
-
-utils.validatePassword('abc123456') // true`,
+              example: `this.$utils.validatePassword('abc123456') // true`,
             },
             {
               name: '验证中文姓名',
@@ -380,9 +354,7 @@ utils.validatePassword('abc123456') // true`,
                 { name: 'name', type: 'string', description: '中文姓名' },
               ],
               returns: { type: 'boolean', description: '验证结果' },
-              example: `import utils from '@/utils'
-
-utils.validateChineseName('张三') // true`,
+              example: `this.$utils.validateChineseName('张三') // true`,
             },
             {
               name: '验证银行卡',
@@ -393,9 +365,7 @@ utils.validateChineseName('张三') // true`,
                 { name: 'cardNumber', type: 'string', description: '银行卡号' },
               ],
               returns: { type: 'boolean', description: '验证结果' },
-              example: `import utils from '@/utils'
-
-utils.validateBankCard('6222021234567890123') // true`,
+              example: `this.$utils.validateBankCard('6222021234567890123') // true`,
             },
             {
               name: '验证URL',
@@ -404,9 +374,7 @@ utils.validateBankCard('6222021234567890123') // true`,
               signature: 'validateUrl(url: string): boolean',
               params: [{ name: 'url', type: 'string', description: 'URL地址' }],
               returns: { type: 'boolean', description: '验证结果' },
-              example: `import utils from '@/utils'
-
-utils.validateUrl('https://www.example.com') // true`,
+              example: `this.$utils.validateUrl('https://www.example.com') // true`,
             },
             {
               name: '验证IPv4',
@@ -415,288 +383,7 @@ utils.validateUrl('https://www.example.com') // true`,
               signature: 'validateIPv4(ip: string): boolean',
               params: [{ name: 'ip', type: 'string', description: 'IP地址' }],
               returns: { type: 'boolean', description: '验证结果' },
-              example: `import utils from '@/utils'
-
-utils.validateIPv4('192.168.1.1') // true`,
-            },
-          ],
-        },
-        {
-          id: 'dom',
-          name: 'DOM操作',
-          icon: 'el-icon-document',
-          functions: [
-            {
-              name: '元素选择器',
-              category: 'DOM查询',
-              description: '获取第一个匹配的元素',
-              signature: '$(selector: string, context?: Element): Element|null',
-              params: [
-                { name: 'selector', type: 'string', description: 'CSS选择器' },
-                {
-                  name: 'context',
-                  type: 'Element',
-                  description: '查找上下文，默认为document',
-                },
-              ],
-              returns: { type: 'Element|null', description: '匹配的元素' },
-              example: `import utils from '@/utils'
-
-const button = utils.$("#myButton")`,
-            },
-            {
-              name: '多元素选择器',
-              category: 'DOM查询',
-              description: '获取所有匹配的元素',
-              signature: '$$(selector: string, context?: Element): NodeList',
-              params: [
-                { name: 'selector', type: 'string', description: 'CSS选择器' },
-                {
-                  name: 'context',
-                  type: 'Element',
-                  description: '查找上下文，默认为document',
-                },
-              ],
-              returns: { type: 'NodeList', description: '匹配的所有元素' },
-              example: `import utils from '@/utils'
-
-const buttons = utils.$$("button")`,
-            },
-            {
-              name: '添加CSS类',
-              category: 'CSS操作',
-              description: '为元素添加一个或多个CSS类',
-              signature:
-                'addClass(element: Element, className: string|Array): void',
-              params: [
-                { name: 'element', type: 'Element', description: '目标元素' },
-                {
-                  name: 'className',
-                  type: 'string|Array',
-                  description: '类名或类名数组',
-                },
-              ],
-              returns: { type: 'void', description: '无返回值' },
-              example: `import utils from '@/utils'
-
-utils.addClass(el, 'active')`,
-            },
-            {
-              name: '移除CSS类',
-              category: 'CSS操作',
-              description: '从元素移除一个或多个CSS类',
-              signature:
-                'removeClass(element: Element, className: string|Array): void',
-              params: [
-                { name: 'element', type: 'Element', description: '目标元素' },
-                {
-                  name: 'className',
-                  type: 'string|Array',
-                  description: '类名或类名数组',
-                },
-              ],
-              returns: { type: 'void', description: '无返回值' },
-              example: `import utils from '@/utils'
-
-utils.removeClass(el, 'active')`,
-            },
-            {
-              name: '切换CSS类',
-              category: 'CSS操作',
-              description: '切换元素的CSS类',
-              signature:
-                'toggleClass(element: Element, className: string, force?: boolean): boolean',
-              params: [
-                { name: 'element', type: 'Element', description: '目标元素' },
-                { name: 'className', type: 'string', description: '类名' },
-                {
-                  name: 'force',
-                  type: 'boolean',
-                  description: '强制添加或移除',
-                },
-              ],
-              returns: { type: 'boolean', description: '是否包含该类' },
-              example: `import utils from '@/utils'
-
-utils.toggleClass(el, 'active')`,
-            },
-            {
-              name: '检查CSS类',
-              category: 'CSS操作',
-              description: '检查元素是否包含指定的CSS类',
-              signature:
-                'hasClass(element: Element, className: string): boolean',
-              params: [
-                { name: 'element', type: 'Element', description: '目标元素' },
-                { name: 'className', type: 'string', description: '类名' },
-              ],
-              returns: { type: 'boolean', description: '是否包含该类' },
-              example: `import utils from '@/utils'
-
-utils.hasClass(el, 'active') // true/false`,
-            },
-            {
-              name: '设置样式',
-              category: 'CSS操作',
-              description: '设置元素的CSS样式',
-              signature:
-                'setStyle(element: Element, styles: Object|string, value?: string): void',
-              params: [
-                { name: 'element', type: 'Element', description: '目标元素' },
-                {
-                  name: 'styles',
-                  type: 'Object|string',
-                  description: '样式对象或属性名',
-                },
-                { name: 'value', type: 'string', description: '样式值' },
-              ],
-              returns: { type: 'void', description: '无返回值' },
-              example: `import utils from '@/utils'
-
-utils.setStyle(el, { color: 'red', fontSize: '16px' })`,
-            },
-            {
-              name: '获取样式',
-              category: 'CSS操作',
-              description: '获取元素的计算样式',
-              signature: 'getStyle(element: Element, property: string): string',
-              params: [
-                { name: 'element', type: 'Element', description: '目标元素' },
-                { name: 'property', type: 'string', description: '样式属性名' },
-              ],
-              returns: { type: 'string', description: '样式值' },
-              example: `import utils from '@/utils'
-
-utils.getStyle(el, 'color') // 'rgb(255, 0, 0)'`,
-            },
-            {
-              name: '显示元素',
-              category: '显示控制',
-              description: '显示隐藏的元素',
-              signature: 'show(element: Element, display?: string): void',
-              params: [
-                { name: 'element', type: 'Element', description: '目标元素' },
-                {
-                  name: 'display',
-                  type: 'string',
-                  description: '显示类型，默认为block',
-                },
-              ],
-              returns: { type: 'void', description: '无返回值' },
-              example: `import utils from '@/utils'
-
-utils.show(el, 'flex')`,
-            },
-            {
-              name: '隐藏元素',
-              category: '显示控制',
-              description: '隐藏元素',
-              signature: 'hide(element: Element): void',
-              params: [
-                { name: 'element', type: 'Element', description: '目标元素' },
-              ],
-              returns: { type: 'void', description: '无返回值' },
-              example: `import utils from '@/utils'
-
-utils.hide(el)`,
-            },
-            {
-              name: '切换显示',
-              category: '显示控制',
-              description: '切换元素的显示状态',
-              signature: 'toggle(element: Element, display?: string): boolean',
-              params: [
-                { name: 'element', type: 'Element', description: '目标元素' },
-                {
-                  name: 'display',
-                  type: 'string',
-                  description: '显示类型，默认为block',
-                },
-              ],
-              returns: { type: 'boolean', description: '当前是否显示' },
-              example: `import utils from '@/utils'
-
-utils.toggle(el, 'flex')`,
-            },
-            {
-              name: '滚动到元素',
-              category: '滚动操作',
-              description: '平滑滚动到指定元素',
-              signature:
-                'scrollToElement(element: Element, options?: Object): void',
-              params: [
-                { name: 'element', type: 'Element', description: '目标元素' },
-                { name: 'options', type: 'Object', description: '滚动选项' },
-              ],
-              returns: { type: 'void', description: '无返回值' },
-              example: `import utils from '@/utils'
-
-utils.scrollToElement(targetEl, { behavior: 'smooth' })`,
-            },
-            {
-              name: '滚动到顶部',
-              category: '滚动操作',
-              description: '平滑滚动到页面顶部',
-              signature: 'scrollToTop(options?: Object): void',
-              params: [
-                { name: 'options', type: 'Object', description: '滚动选项' },
-              ],
-              returns: { type: 'void', description: '无返回值' },
-              example: `import utils from '@/utils'
-
-utils.scrollToTop({ behavior: 'smooth' })`,
-            },
-            {
-              name: '创建元素',
-              category: 'DOM创建',
-              description: '创建DOM元素',
-              signature:
-                'createElement(tagName: string, attributes?: Object, children?: Array): Element',
-              params: [
-                { name: 'tagName', type: 'string', description: '标签名' },
-                { name: 'attributes', type: 'Object', description: '属性对象' },
-                { name: 'children', type: 'Array', description: '子元素数组' },
-              ],
-              returns: { type: 'Element', description: '创建的元素' },
-              example: `import utils from '@/utils'
-
-utils.createElement('div', { class: 'container' })`,
-            },
-            {
-              name: '移除元素',
-              category: 'DOM操作',
-              description: '从DOM中移除元素',
-              signature: 'removeElement(element: Element): void',
-              params: [
-                {
-                  name: 'element',
-                  type: 'Element',
-                  description: '要移除的元素',
-                },
-              ],
-              returns: { type: 'void', description: '无返回值' },
-              example: `import utils from '@/utils'
-
-utils.removeElement(el)`,
-            },
-            {
-              name: '检查视口可见',
-              category: 'DOM查询',
-              description: '检查元素是否在可视区域内',
-              signature:
-                'isInViewport(element: Element, threshold?: number): boolean',
-              params: [
-                { name: 'element', type: 'Element', description: '目标元素' },
-                {
-                  name: 'threshold',
-                  type: 'number',
-                  description: '阈值（0-1），默认为0',
-                },
-              ],
-              returns: { type: 'boolean', description: '是否在视口中' },
-              example: `import utils from '@/utils'
-
-utils.isInViewport(el, 0.5) // 元素50%可见时返回true`,
+              example: `this.$utils.validateIPv4('192.168.1.1') // true`,
             },
           ],
         },
@@ -715,9 +402,7 @@ utils.isInViewport(el, 0.5) // 元素50%可见时返回true`,
                 { name: 'b', type: 'number', description: '第二个数' },
               ],
               returns: { type: 'number', description: '精确的和' },
-              example: `import utils from '@/utils'
-
-utils.add(0.1, 0.2) // 0.3`,
+              example: `this.$utils.add(0.1, 0.2) // 0.3`,
             },
             {
               name: '精确减法',
@@ -729,9 +414,7 @@ utils.add(0.1, 0.2) // 0.3`,
                 { name: 'b', type: 'number', description: '减数' },
               ],
               returns: { type: 'number', description: '精确的差' },
-              example: `import utils from '@/utils'
-
-utils.subtract(0.3, 0.1) // 0.2`,
+              example: `this.$utils.subtract(0.3, 0.1) // 0.2`,
             },
             {
               name: '精确乘法',
@@ -743,9 +426,7 @@ utils.subtract(0.3, 0.1) // 0.2`,
                 { name: 'b', type: 'number', description: '第二个数' },
               ],
               returns: { type: 'number', description: '精确的积' },
-              example: `import utils from '@/utils'
-
-utils.multiply(0.1, 0.2) // 0.02`,
+              example: `this.$utils.multiply(0.1, 0.2) // 0.02`,
             },
             {
               name: '精确除法',
@@ -757,9 +438,7 @@ utils.multiply(0.1, 0.2) // 0.02`,
                 { name: 'b', type: 'number', description: '除数' },
               ],
               returns: { type: 'number', description: '精确的商' },
-              example: `import utils from '@/utils'
-
-utils.divide(0.3, 0.1) // 3`,
+              example: `this.$utils.divide(0.3, 0.1) // 3`,
             },
             {
               name: '随机数',
@@ -771,9 +450,7 @@ utils.divide(0.3, 0.1) // 3`,
                 { name: 'max', type: 'number', description: '最大值' },
               ],
               returns: { type: 'number', description: '随机数' },
-              example: `import utils from '@/utils'
-
-utils.random(1, 100) // 1-100之间的随机数`,
+              example: `this.$utils.random(1, 100) // 1-100之间的随机数`,
             },
             {
               name: '随机整数',
@@ -785,9 +462,7 @@ utils.random(1, 100) // 1-100之间的随机数`,
                 { name: 'max', type: 'number', description: '最大值（包含）' },
               ],
               returns: { type: 'number', description: '随机整数' },
-              example: `import utils from '@/utils'
-
-utils.randomInt(1, 10) // 1-10之间的随机整数`,
+              example: `this.$utils.randomInt(1, 10) // 1-10之间的随机整数`,
             },
             {
               name: '计算百分比',
@@ -801,9 +476,7 @@ utils.randomInt(1, 10) // 1-10之间的随机整数`,
                 { name: 'precision', type: 'number', description: '精度位数' },
               ],
               returns: { type: 'number', description: '百分比' },
-              example: `import utils from '@/utils'
-
-utils.percentage(25, 100) // 25`,
+              example: `this.$utils.percentage(25, 100) // 25`,
             },
             {
               name: '数值限制',
@@ -817,9 +490,7 @@ utils.percentage(25, 100) // 25`,
                 { name: 'max', type: 'number', description: '最大值' },
               ],
               returns: { type: 'number', description: '限制后的值' },
-              example: `import utils from '@/utils'
-
-utils.clamp(15, 0, 10) // 10`,
+              example: `this.$utils.clamp(15, 0, 10) // 10`,
             },
             {
               name: '线性插值',
@@ -832,9 +503,7 @@ utils.clamp(15, 0, 10) // 10`,
                 { name: 't', type: 'number', description: '插值因子（0-1）' },
               ],
               returns: { type: 'number', description: '插值结果' },
-              example: `import utils from '@/utils'
-
-utils.lerp(0, 100, 0.5) // 50`,
+              example: `this.$utils.lerp(0, 100, 0.5) // 50`,
             },
             {
               name: '数值映射',
@@ -866,9 +535,7 @@ utils.lerp(0, 100, 0.5) // 50`,
                 },
               ],
               returns: { type: 'number', description: '映射后的值' },
-              example: `import utils from '@/utils'
-
-utils.map(5, 0, 10, 0, 100) // 50`,
+              example: `this.$utils.map(5, 0, 10, 0, 100) // 50`,
             },
             {
               name: '平均值',
@@ -883,9 +550,7 @@ utils.map(5, 0, 10, 0, 100) // 50`,
                 },
               ],
               returns: { type: 'number', description: '平均值' },
-              example: `import utils from '@/utils'
-
-utils.average([1, 2, 3, 4, 5]) // 3`,
+              example: `this.$utils.average([1, 2, 3, 4, 5]) // 3`,
             },
             {
               name: '中位数',
@@ -900,9 +565,7 @@ utils.average([1, 2, 3, 4, 5]) // 3`,
                 },
               ],
               returns: { type: 'number', description: '中位数' },
-              example: `import utils from '@/utils'
-
-utils.median([1, 2, 3, 4, 5]) // 3`,
+              example: `this.$utils.median([1, 2, 3, 4, 5]) // 3`,
             },
             {
               name: '最大值',
@@ -917,9 +580,7 @@ utils.median([1, 2, 3, 4, 5]) // 3`,
                 },
               ],
               returns: { type: 'number', description: '最大值' },
-              example: `import utils from '@/utils'
-
-utils.max([1, 5, 3, 9, 2]) // 9`,
+              example: `this.$utils.max([1, 5, 3, 9, 2]) // 9`,
             },
             {
               name: '最小值',
@@ -934,9 +595,7 @@ utils.max([1, 5, 3, 9, 2]) // 9`,
                 },
               ],
               returns: { type: 'number', description: '最小值' },
-              example: `import utils from '@/utils'
-
-utils.min([1, 5, 3, 9, 2]) // 1`,
+              example: `this.$utils.min([1, 5, 3, 9, 2]) // 1`,
             },
             {
               name: '求和',
@@ -951,9 +610,7 @@ utils.min([1, 5, 3, 9, 2]) // 1`,
                 },
               ],
               returns: { type: 'number', description: '总和' },
-              example: `import utils from '@/utils'
-
-utils.sum([1, 2, 3, 4, 5]) // 15`,
+              example: `this.$utils.sum([1, 2, 3, 4, 5]) // 15`,
             },
             {
               name: '阶乘',
@@ -964,9 +621,7 @@ utils.sum([1, 2, 3, 4, 5]) // 15`,
                 { name: 'n', type: 'number', description: '要计算阶乘的数字' },
               ],
               returns: { type: 'number', description: '阶乘结果' },
-              example: `import utils from '@/utils'
-
-utils.factorial(5) // 120`,
+              example: `this.$utils.factorial(5) // 120`,
             },
             {
               name: '判断质数',
@@ -977,9 +632,7 @@ utils.factorial(5) // 120`,
                 { name: 'n', type: 'number', description: '要判断的数字' },
               ],
               returns: { type: 'boolean', description: '是否为质数' },
-              example: `import utils from '@/utils'
-
-utils.isPrime(17) // true`,
+              example: `this.$utils.isPrime(17) // true`,
             },
             {
               name: '最大公约数',
@@ -991,9 +644,7 @@ utils.isPrime(17) // true`,
                 { name: 'b', type: 'number', description: '第二个数' },
               ],
               returns: { type: 'number', description: '最大公约数' },
-              example: `import utils from '@/utils'
-
-utils.gcd(12, 18) // 6`,
+              example: `this.$utils.gcd(12, 18) // 6`,
             },
             {
               name: '最小公倍数',
@@ -1005,9 +656,7 @@ utils.gcd(12, 18) // 6`,
                 { name: 'b', type: 'number', description: '第二个数' },
               ],
               returns: { type: 'number', description: '最小公倍数' },
-              example: `import utils from '@/utils'
-
-utils.lcm(4, 6) // 12`,
+              example: `this.$utils.lcm(4, 6) // 12`,
             },
           ],
         },
@@ -1032,9 +681,7 @@ utils.lcm(4, 6) // 12`,
                 },
               ],
               returns: { type: 'void', description: '无返回值' },
-              example: `import utils from '@/utils'
-
-utils.storage.set('user', { name: 'John' }, 3600000) // 1小时后过期`,
+              example: `this.$utils.storage.set('user', { name: 'John' }, 3600000) // 1小时后过期`,
             },
             {
               name: '获取数据',
@@ -1048,9 +695,7 @@ utils.storage.set('user', { name: 'John' }, 3600000) // 1小时后过期`,
                 type: 'any',
                 description: '存储的值，如果不存在或已过期则返回null',
               },
-              example: `import utils from '@/utils'
-
-utils.storage.get('user') // 返回存储的用户数据或null`,
+              example: `this.$utils.storage.get('user') // 返回存储的用户数据或null`,
             },
             {
               name: '删除数据',
@@ -1061,9 +706,7 @@ utils.storage.get('user') // 返回存储的用户数据或null`,
                 { name: 'key', type: 'string', description: '存储键名' },
               ],
               returns: { type: 'void', description: '无返回值' },
-              example: `import utils from '@/utils'
-
-utils.storage.remove('user')`,
+              example: `this.$utils.storage.remove('user')`,
             },
             {
               name: '清空存储',
@@ -1072,9 +715,7 @@ utils.storage.remove('user')`,
               signature: 'storage.clear(): void',
               params: [],
               returns: { type: 'void', description: '无返回值' },
-              example: `import utils from '@/utils'
-
-utils.storage.clear()`,
+              example: `this.$utils.storage.clear()`,
             },
           ],
         },
@@ -1098,9 +739,7 @@ utils.storage.clear()`,
                 },
               ],
               returns: { type: 'string|null', description: '参数值' },
-              example: `import utils from '@/utils'
-
-utils.urlUtils.getParam('id') // 从当前URL获取id参数`,
+              example: `this.$utils.urlUtils.getParam('id') // 从当前URL获取id参数`,
             },
             {
               name: '获取所有参数',
@@ -1115,9 +754,7 @@ utils.urlUtils.getParam('id') // 从当前URL获取id参数`,
                 },
               ],
               returns: { type: 'Object', description: '参数对象' },
-              example: `import utils from '@/utils'
-
-utils.urlUtils.getAllParams() // { id: '123', name: 'John' }`,
+              example: `this.$utils.urlUtils.getAllParams() // { id: '123', name: 'John' }`,
             },
             {
               name: '构建URL',
@@ -1130,9 +767,7 @@ utils.urlUtils.getAllParams() // { id: '123', name: 'John' }`,
                 { name: 'params', type: 'Object', description: '参数对象' },
               ],
               returns: { type: 'string', description: '完整URL' },
-              example: `import utils from '@/utils'
-
-utils.urlUtils.buildUrl('/api/users', { page: 1, size: 10 })`,
+              example: `this.$utils.urlUtils.buildUrl('/api/users', { page: 1, size: 10 })`,
             },
           ],
         },
@@ -1156,9 +791,7 @@ utils.urlUtils.buildUrl('/api/users', { page: 1, size: 10 })`,
                 },
               ],
               returns: { type: 'Array', description: '去重后的数组' },
-              example: `import utils from '@/utils'
-
-utils.arrayUtils.unique([1, 2, 2, 3]) // [1, 2, 3]`,
+              example: `this.$utils.arrayUtils.unique([1, 2, 2, 3]) // [1, 2, 3]`,
             },
             {
               name: '数组分组',
@@ -1175,9 +808,7 @@ utils.arrayUtils.unique([1, 2, 2, 3]) // [1, 2, 3]`,
                 },
               ],
               returns: { type: 'Object', description: '分组后的对象' },
-              example: `import utils from '@/utils'
-
-utils.arrayUtils.groupBy(users, 'department')`,
+              example: `this.$utils.arrayUtils.groupBy(users, 'department')`,
             },
             {
               name: '数组分块',
@@ -1189,9 +820,7 @@ utils.arrayUtils.groupBy(users, 'department')`,
                 { name: 'size', type: 'number', description: '每块的大小' },
               ],
               returns: { type: 'Array', description: '分块后的二维数组' },
-              example: `import utils from '@/utils'
-
-utils.arrayUtils.chunk([1, 2, 3, 4, 5], 2) // [[1, 2], [3, 4], [5]]`,
+              example: `this.$utils.arrayUtils.chunk([1, 2, 3, 4, 5], 2) // [[1, 2], [3, 4], [5]]`,
             },
             {
               name: '数组扁平化',
@@ -1208,9 +837,7 @@ utils.arrayUtils.chunk([1, 2, 3, 4, 5], 2) // [[1, 2], [3, 4], [5]]`,
                 },
               ],
               returns: { type: 'Array', description: '扁平化后的数组' },
-              example: `import utils from '@/utils'
-
-utils.arrayUtils.flatten([[1, 2], [3, 4]]) // [1, 2, 3, 4]`,
+              example: `this.$utils.arrayUtils.flatten([[1, 2], [3, 4]]) // [1, 2, 3, 4]`,
             },
           ],
         },
@@ -1226,9 +853,7 @@ utils.arrayUtils.flatten([[1, 2], [3, 4]]) // [1, 2, 3, 4]`,
               signature: 'deviceUtils.isMobile(): boolean',
               params: [],
               returns: { type: 'boolean', description: '是否为移动设备' },
-              example: `import utils from '@/utils'
-
-utils.deviceUtils.isMobile() // true/false`,
+              example: `this.$utils.deviceUtils.isMobile() // true/false`,
             },
             {
               name: '检测平板设备',
@@ -1237,9 +862,7 @@ utils.deviceUtils.isMobile() // true/false`,
               signature: 'deviceUtils.isTablet(): boolean',
               params: [],
               returns: { type: 'boolean', description: '是否为平板设备' },
-              example: `import utils from '@/utils'
-
-utils.deviceUtils.isTablet() // true/false`,
+              example: `this.$utils.deviceUtils.isTablet() // true/false`,
             },
             {
               name: '检测桌面设备',
@@ -1248,9 +871,7 @@ utils.deviceUtils.isTablet() // true/false`,
               signature: 'deviceUtils.isDesktop(): boolean',
               params: [],
               returns: { type: 'boolean', description: '是否为桌面设备' },
-              example: `import utils from '@/utils'
-
-utils.deviceUtils.isDesktop() // true/false`,
+              example: `this.$utils.deviceUtils.isDesktop() // true/false`,
             },
             {
               name: '获取浏览器信息',
@@ -1259,9 +880,7 @@ utils.deviceUtils.isDesktop() // true/false`,
               signature: 'deviceUtils.getBrowserInfo(): Object',
               params: [],
               returns: { type: 'Object', description: '浏览器信息对象' },
-              example: `import utils from '@/utils'
-
-utils.deviceUtils.getBrowserInfo() // { name: 'Chrome', version: '91.0' }`,
+              example: `this.$utils.deviceUtils.getBrowserInfo() // { name: 'Chrome', version: '91.0' }`,
             },
             {
               name: '获取操作系统',
@@ -1270,9 +889,7 @@ utils.deviceUtils.getBrowserInfo() // { name: 'Chrome', version: '91.0' }`,
               signature: 'deviceUtils.getOS(): string',
               params: [],
               returns: { type: 'string', description: '操作系统名称' },
-              example: `import utils from '@/utils'
-
-utils.deviceUtils.getOS() // 'Windows'`,
+              example: `this.$utils.deviceUtils.getOS() // 'Windows'`,
             },
           ],
         },
@@ -1604,7 +1221,6 @@ utils.deviceUtils.getOS() // 'Windows'`,
 
 .right {
   width: 80%;
-  height: calc(100vh - 200px);
   padding-left: 20px;
 
   .intro-card {
